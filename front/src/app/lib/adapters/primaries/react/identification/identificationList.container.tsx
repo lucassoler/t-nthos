@@ -52,9 +52,11 @@ export default function BasicTable() {
   }
 
   const updateIdentification = async (status:string) => {
-    const result = await IdentificationDI.updateIdentificationHandler.Execute(identification.id, status);
-    await reloadDatas();
-    closeEditModal();
+    if (identification) {
+      const result = await IdentificationDI.updateIdentificationHandler.Execute(identification.id, status);
+      await reloadDatas();
+      closeEditModal();
+    }
   }
   
   const editSortBy = (newSortBy:string) => {
